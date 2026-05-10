@@ -1,0 +1,1431 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Catálogo Interno · Códigos de Servicios</title>
+
+  <!-- Opcional (requiere internet) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#f5f7ff;
+      --card:#ffffff;
+
+      --text:#0b1220;
+      --muted:#5b677a;
+
+      --line:rgba(15,23,42,.10);
+      --line2:rgba(15,23,42,.16);
+
+      --accent:#2563eb;
+      --accent2:#38bdf8;
+
+      --danger:#e11d48;
+
+      --radius:16px;
+      --shadow: 0 12px 30px rgba(2,6,23,.10);
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+
+    body{
+      margin:0;
+      background:
+        radial-gradient(1200px 800px at 75% -10%, rgba(37,99,235,.10), transparent 55%),
+        radial-gradient(900px 650px at 5% 10%, rgba(56,189,248,.10), transparent 45%),
+        var(--bg);
+      color:var(--text);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    .wrap{
+      max-width: 1280px;
+      margin: 28px auto 56px;
+      padding: 0 18px;
+    }
+
+    header{
+      display:flex;
+      align-items:stretch;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom: 16px;
+    }
+
+    .title{
+      padding: 18px 18px 16px;
+      border:1px solid var(--line);
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      flex:1;
+      min-width: 280px;
+    }
+
+    .kicker{
+      font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    h1{
+      margin:10px 0 8px;
+      font-size: 26px;
+      letter-spacing: .01em;
+      line-height:1.15;
+    }
+
+    .sub{
+      margin:0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.4;
+      max-width: 95ch;
+    }
+
+    .badge-internal{
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--card);
+      box-shadow: var(--shadow);
+      padding: 18px;
+      min-width: 240px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      gap:10px;
+    }
+    .badge-internal .big{
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
+      letter-spacing:.22em;
+      text-transform: uppercase;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .badge-internal .mark{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight: 600;
+    }
+    .dot{
+      width:10px;height:10px;border-radius:999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 6px rgba(37,99,235,.10);
+    }
+
+    .panel{
+      border:1px solid var(--line);
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+
+    .panel-head{
+      padding: 14px 16px 12px;
+      display:flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: end;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255,255,255,.75);
+      backdrop-filter: blur(10px);
+    }
+
+    .field{
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      min-width: 190px;
+    }
+
+    label{
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      color: var(--muted);
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
+    }
+
+    input[type="search"], select{
+      width: 100%;
+      border-radius: 12px;
+      border:1px solid var(--line2);
+      background: #fff;
+      color: var(--text);
+      padding: 10px 12px;
+      outline:none;
+    }
+    input[type="search"]::placeholder{ color: rgba(91,103,122,.7); }
+
+    .row{
+      display:flex; gap:10px; align-items:center; flex-wrap: wrap;
+    }
+
+    .btn{
+      border: 1px solid var(--line2);
+      background: #fff;
+      color: var(--text);
+      padding: 10px 12px;
+      border-radius: 12px;
+      cursor:pointer;
+      font-weight: 600;
+      letter-spacing: .01em;
+    }
+    .btn:hover{ border-color: rgba(15,23,42,.28); }
+    .btn:active{ transform: translateY(1px); }
+    .btn:disabled{ opacity:.55; cursor:not-allowed; }
+
+    .btn.primary{
+      border-color: rgba(37,99,235,.35);
+      background: rgba(37,99,235,.08);
+    }
+    .btn.danger{
+      border-color: rgba(225,29,72,.28);
+      background: rgba(225,29,72,.06);
+    }
+    .btn-mini{
+      padding: 8px 10px;
+      border-radius: 10px;
+      font-size: 12px;
+    }
+
+    .stats{
+      margin-left:auto;
+      display:flex;
+      gap:10px;
+      flex-wrap: wrap;
+      align-items:center;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .pill{
+      border:1px solid var(--line);
+      border-radius: 999px;
+      padding: 7px 10px;
+      background: rgba(37,99,235,.04);
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
+      letter-spacing: .06em;
+    }
+    .pill strong{ color: var(--text); font-weight: 700; }
+
+    .toggle{
+      display:flex; align-items:center; gap:10px;
+      padding: 10px 12px;
+      border:1px solid var(--line2);
+      border-radius: 12px;
+      background: #fff;
+      user-select:none;
+    }
+    .toggle input{ width:16px; height:16px; }
+
+    .table-wrap{
+      overflow:auto;
+      max-height: calc(100vh - 260px);
+    }
+
+    table{
+      width:100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      min-width: 1100px;
+    }
+
+    thead th{
+      position: sticky;
+      top:0;
+      z-index: 3;
+      background: rgba(255,255,255,.94);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line2);
+      color: var(--muted);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
+      padding: 12px 10px;
+      text-align:left;
+      white-space: nowrap;
+    }
+
+    tbody td{
+      border-bottom: 1px solid var(--line);
+      padding: 12px 10px;
+      vertical-align: top;
+      font-size: 13px;
+      color: rgba(11,18,32,.95);
+      background: transparent;
+    }
+
+    tbody tr:hover td{
+      background: rgba(37,99,235,.04);
+    }
+
+    .code{
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
+      letter-spacing:.02em;
+      display:flex;
+      gap:10px;
+      align-items:center;
+      white-space: nowrap;
+    }
+
+    .mini{
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .copy{
+      border:1px solid var(--line2);
+      background: #fff;
+      color: var(--text);
+      border-radius: 10px;
+      padding: 6px 8px;
+      cursor:pointer;
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
+      font-size: 11px;
+    }
+    .copy:hover{ border-color: rgba(37,99,235,.35); }
+
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      border:1px solid var(--line);
+      background: rgba(37,99,235,.04);
+      padding: 6px 10px;
+      border-radius: 999px;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .tag .bar{
+      width:9px; height:9px; border-radius: 999px;
+      background: var(--accent2);
+      box-shadow: 0 0 0 6px rgba(56,189,248,.12);
+    }
+
+    .dup{
+      color: var(--danger);
+      border-color: rgba(225,29,72,.25);
+      background: rgba(225,29,72,.06);
+      margin-left: 6px;
+      font-weight: 800;
+    }
+
+    .svc{
+      font-weight: 700;
+      letter-spacing: .01em;
+    }
+
+    /* Variants list (collapsible) */
+    .vlist{
+      margin-top: 10px;
+      padding: 10px;
+      border: 1px dashed rgba(37,99,235,.35);
+      border-radius: 12px;
+      background: rgba(37,99,235,.04);
+    }
+    .vitem{
+      padding: 8px 8px;
+      border-bottom: 1px solid var(--line);
+    }
+    .vitem:last-child{ border-bottom: 0; padding-bottom: 0; }
+    .vitem .top{
+      display:flex;
+      gap:10px;
+      justify-content:space-between;
+      align-items:baseline;
+      flex-wrap: wrap;
+    }
+    .vname{
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
+      font-size: 12px;
+      color: rgba(11,18,32,.92);
+    }
+    .vmeta{
+      font-size: 12px;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .foot{
+      padding: 12px 16px;
+      color: var(--muted);
+      font-size: 12px;
+      border-top: 1px solid var(--line);
+      display:flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items:center;
+      justify-content:space-between;
+      background: rgba(245,247,255,.6);
+    }
+    .foot .hint{
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
+      letter-spacing: .06em;
+    }
+
+    /* Dialog */
+    dialog{
+      border:1px solid var(--line2);
+      border-radius: var(--radius);
+      padding:0;
+      max-width: 1100px;
+      width: calc(100% - 24px);
+      box-shadow: var(--shadow);
+      background: var(--card);
+      color: var(--text);
+    }
+    dialog::backdrop{
+      background: rgba(2,6,23,.35);
+      backdrop-filter: blur(2px);
+    }
+    .dlg-head{ padding: 14px 16px; border-bottom: 1px solid var(--line); }
+    .dlg-body{ padding: 14px 16px; }
+
+    .vtools{
+      margin-top: 12px;
+      display:flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: end;
+      justify-content: space-between;
+    }
+
+    .vtable{ width:100%; border-collapse: separate; border-spacing: 0; min-width: 1040px; }
+    .vtable th{
+      text-align:left;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
+      color: var(--muted);
+      padding: 10px 10px;
+      border-bottom: 1px solid var(--line2);
+      background: rgba(245,247,255,.85);
+      position: sticky;
+      top: 0;
+    }
+    .vtable td{
+      padding: 10px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+    .vedit{
+      width: 100%;
+      border-radius: 10px;
+      border:1px solid var(--line2);
+      background: #fff;
+      color: var(--text);
+      padding: 8px 10px;
+      outline:none;
+      font-size: 13px;
+      font-family: inherit;
+      resize: vertical;
+      min-height: 38px;
+    }
+    textarea.vedit{ min-height: 74px; }
+
+    .toast{
+      position: fixed;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%);
+      background: rgba(255,255,255,.92);
+      border: 1px solid var(--line2);
+      color: var(--text);
+      padding: 10px 12px;
+      border-radius: 999px;
+      box-shadow: var(--shadow);
+      font-size: 13px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .2s ease, transform .2s ease;
+    }
+    .toast.show{ opacity: 1; transform: translateX(-50%) translateY(-2px); }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div class="title">
+        <div class="kicker">Catálogo interno · Códigos base</div>
+        <h1>Servicios · Variaciones · Precios (MXN)</h1>
+        <p class="sub">
+          Tabla compacta para uso interno. En “Variaciones” puedes cargar plantillas (Offset 1000, DTF, tallas, paquetes),
+          reordenar con Subir/Bajar, duplicar y buscar dentro del listado.
+        </p>
+      </div>
+
+      <aside class="badge-internal">
+        <div class="big">Uso interno</div>
+        <div class="mark"><span class="dot"></span> Variaciones como fuente de precio</div>
+        <div class="mini">Exporta CSV cuando lo necesites.</div>
+      </aside>
+    </header>
+
+    <section class="panel" aria-label="Filtros">
+      <div class="panel-head">
+        <div class="field" style="min-width: 320px; flex: 1;">
+          <label for="q">Buscar</label>
+          <input id="q" type="search" placeholder="Código, categoría, subcategoría, servicio o descripción…" />
+        </div>
+
+        <div class="field">
+          <label for="cat">Categoría</label>
+          <select id="cat">
+            <option value="">Todas</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="sub">Subcategoría</label>
+          <select id="sub">
+            <option value="">Todas</option>
+          </select>
+        </div>
+
+        <div class="field" style="min-width: 220px;">
+          <label>Opciones</label>
+          <div class="row">
+            <label class="toggle" title="Muestra solo los códigos que se repiten">
+              <input type="checkbox" id="onlyDup" />
+              <span class="mini">Solo duplicados</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="row" style="align-self:flex-end;">
+          <button class="btn primary" id="exportCsv">Exportar CSV</button>
+          <button class="btn danger" id="resetLocal">Reset variaciones/datos</button>
+        </div>
+
+        <div class="stats">
+          <div class="pill">Mostrando <strong id="count">0</strong></div>
+          <div class="pill">Duplicados <strong id="dupCount">0</strong></div>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th style="width:170px;">Código</th>
+              <th style="width:230px;">Categoría</th>
+              <th style="width:220px;">Subcategoría</th>
+              <th style="width:360px;">Servicio</th>
+              <th style="width:420px;">Variaciones</th>
+            </tr>
+          </thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+
+      <div class="foot">
+        <div class="hint">Offset: “4x1 / 4x4” está como CMYK tiro/retiro en la plantilla.</div>
+        <div class="mini">Datos guardados en tu navegador (localStorage).</div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Modal Variaciones -->
+  <dialog id="variantsDialog">
+    <div class="dlg">
+      <div class="dlg-head">
+        <div class="kicker">Variaciones / Presentaciones</div>
+        <h2 id="vTitle" style="margin:8px 0 0; font-size:18px;">—</h2>
+        <p class="sub" style="margin-top:8px;">
+          Recomendación: maneja TODO como variaciones. Si un servicio solo tiene un precio, crea una variación “Base”.
+        </p>
+
+        <div class="vtools">
+          <div class="row" style="gap:10px; flex-wrap:wrap; flex: 1;">
+            <div class="field" style="min-width:320px; flex: 1;">
+              <label for="vSearch">Buscar en variaciones</label>
+              <input id="vSearch" type="search" placeholder="Nombre, precio, unidad o texto de ficha técnica…" />
+            </div>
+
+            <div class="field" style="min-width:360px;">
+              <label for="tpl">Plantilla rápida</label>
+              <select id="tpl">
+                <option value="">Selecciona…</option>
+                <option value="DTF_BASE">DTF (XS/S/M/L/XL + Metro + cm²)</option>
+                <option value="FLYER_OFFSET_1000">Flyer Offset (Cuarto/Media/Carta · 4x1/4x4 · por 1000)</option>
+                <option value="PLAYERA_TALLAS">Playeras (S/M/L/XL/XXL)</option>
+                <option value="ESTRATEGIA_BPP">Estrategia (Básico/Pro/Premium)</option>
+              </select>
+            </div>
+
+            <div class="row" style="align-self:flex-end;">
+              <button type="button" class="btn primary" id="applyTpl">Aplicar (reemplaza)</button>
+              <button type="button" class="btn" id="appendTpl">Aplicar (agrega)</button>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:12px;">
+          <div class="field" style="min-width: 100%;">
+            <label for="svcNotes">Notas globales del servicio (opcional)</label>
+            <textarea id="svcNotes" class="vedit" placeholder="Notas que aplican a todas las variaciones (ej. condiciones, archivos, etc.)"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="dlg-body">
+        <div style="overflow:auto; border:1px solid var(--line); border-radius: 12px;">
+          <table class="vtable">
+            <thead>
+              <tr>
+                <th style="width:240px;">Nombre</th>
+                <th style="width:140px;">Precio (MXN)</th>
+                <th style="width:170px;">Unidad</th>
+                <th>Ficha técnica (Notas)</th>
+                <th style="width:260px;"></th>
+              </tr>
+            </thead>
+            <tbody id="vBody"></tbody>
+          </table>
+        </div>
+
+        <div class="row" style="margin-top:12px; justify-content:space-between;">
+          <button type="button" class="btn primary" id="addVar">Añadir variación</button>
+          <div class="row">
+            <button type="button" class="btn" id="closeVar">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <div class="toast" id="toast">Copiado</div>
+
+<script>
+/** =========================
+ *  Base de servicios (del PDF)
+ *  ========================= */
+const baseServices = [
+  // ESTRATEGIA & BRANDING
+  {code:"EST-CON-001",cat:"ESTRATEGIA & BRANDING",sub:"Consultoría Estratégica",svc:"Auditoría de marca",desc:"Análisis profundo de marca existente"},
+  {code:"EST-CON-002",cat:"ESTRATEGIA & BRANDING",sub:"Consultoría Estratégica",svc:"Diagnóstico de identidad",desc:"Evaluación de posicionamiento"},
+  {code:"EST-CON-003",cat:"ESTRATEGIA & BRANDING",sub:"Consultoría Estratégica",svc:"Estrategia de marca",desc:"Definición de valores y propuesta de valor"},
+  {code:"EST-CON-004",cat:"ESTRATEGIA & BRANDING",sub:"Consultoría Estratégica",svc:"Rebranding",desc:"Rediseño completo de marca"},
+  {code:"EST-NAM-001",cat:"ESTRATEGIA & BRANDING",sub:"Naming",svc:"Naming comercial",desc:"Creación de nombres de marca"},
+  {code:"EST-NAM-002",cat:"ESTRATEGIA & BRANDING",sub:"Naming",svc:"Naming artístico",desc:"Nombres para artistas/proyectos creativos"},
+  {code:"EST-DIR-001",cat:"ESTRATEGIA & BRANDING",sub:"Dirección Creativa",svc:"Dirección creativa integral",desc:"Supervisión de todos los aspectos creativos"},
+  {code:"EST-DIR-002",cat:"ESTRATEGIA & BRANDING",sub:"Dirección Creativa",svc:"Consultoría visual",desc:"Asesoría sobre aspectos visuales"},
+  {code:"EST-IDE-001",cat:"ESTRATEGIA & BRANDING",sub:"Identidad Visual",svc:"Logotipos",desc:"Diseño de logotipos únicos"},
+  {code:"EST-IDE-002",cat:"ESTRATEGIA & BRANDING",sub:"Identidad Visual",svc:"Variaciones de logo",desc:"Versiones para diferentes contextos"},
+  {code:"EST-IDE-003",cat:"ESTRATEGIA & BRANDING",sub:"Identidad Visual",svc:"Isotipos/Isotipos",desc:"Marca gráfica sin texto"},
+  {code:"EST-MAN-001",cat:"ESTRATEGIA & BRANDING",sub:"Manuales de Marca",svc:"Manuales de identidad completos",desc:"Documentación de normas de marca"},
+  {code:"EST-MAN-002",cat:"ESTRATEGIA & BRANDING",sub:"Manuales de Marca",svc:"Brand guidelines",desc:"Guías de uso de marca"},
+  {code:"EST-MAN-003",cat:"ESTRATEGIA & BRANDING",sub:"Manuales de Marca",svc:"Paleta cromática",desc:"Definición de colores corporativos"},
+  {code:"EST-MAN-004",cat:"ESTRATEGIA & BRANDING",sub:"Manuales de Marca",svc:"Tipografía corporativa",desc:"Selección y aplicación de fuentes"},
+
+  // IDENTIDAD CORPORATIVA
+  {code:"IDE-PAP-001",cat:"IDENTIDAD CORPORATIVA",sub:"Papelería Corporativa",svc:"Tarjetas de presentación",desc:"Diseño e impresión"},
+  {code:"IDE-PAP-002",cat:"IDENTIDAD CORPORATIVA",sub:"Papelería Corporativa",svc:"Hojas membretadas",desc:"Papel oficial con membrete"},
+  {code:"IDE-PAP-003",cat:"IDENTIDAD CORPORATIVA",sub:"Papelería Corporativa",svc:"Sobres institucionales",desc:"Sobres personalizados"},
+  {code:"IDE-PAP-004",cat:"IDENTIDAD CORPORATIVA",sub:"Papelería Corporativa",svc:"Carpetas de presentación",desc:"Carpetas personalizadas"},
+  {code:"IDE-PAP-005",cat:"IDENTIDAD CORPORATIVA",sub:"Papelería Corporativa",svc:"Bloc de notas",desc:"Libretitas personalizadas"},
+
+  // repetidos (se marcan DUP)
+  {code:"IDE-PAP-001",cat:"IDENTIDAD CORPORATIVA",sub:"Papelería Digital",svc:"Plantillas de correo",desc:"Templates para email marketing"},
+  {code:"IDE-PAP-002",cat:"IDENTIDAD CORPORATIVA",sub:"Papelería Digital",svc:"Plantillas de documento",desc:"Word/PDF templates"},
+  {code:"IDE-PAP-003",cat:"IDENTIDAD CORPORATIVA",sub:"Papelería Digital",svc:"Firmas digitales",desc:"Firmas para email"},
+
+  // DISEÑO DIGITAL
+  {code:"DIS-UXU-001",cat:"DISEÑO DIGITAL",sub:"UX/UI",svc:"Diseño UX/UI",desc:"Interfaz de usuario profesional"},
+  {code:"DIS-UXU-002",cat:"DISEÑO DIGITAL",sub:"UX/UI",svc:"Wireframing",desc:"Esquemas de layout y estructura"},
+  {code:"DIS-UXU-003",cat:"DISEÑO DIGITAL",sub:"UX/UI",svc:"Prototipado interactivo",desc:"Prototipos clickeables y funcionales"},
+  {code:"DIS-UXU-004",cat:"DISEÑO DIGITAL",sub:"UX/UI",svc:"Testing de usabilidad",desc:"Evaluación de experiencia del usuario"},
+  {code:"DIS-UXU-005",cat:"DISEÑO DIGITAL",sub:"UX/UI",svc:"Auditoría UX",desc:"Análisis de experiencia existente"},
+
+  {code:"DIS-DES-001",cat:"DISEÑO DIGITAL",sub:"Desarrollo Web",svc:"Sitios web completos",desc:"Desarrollo y diseño web"},
+  {code:"DIS-DES-002",cat:"DISEÑO DIGITAL",sub:"Desarrollo Web",svc:"Landing pages",desc:"Páginas de destino optimizadas"},
+  {code:"DIS-DES-003",cat:"DISEÑO DIGITAL",sub:"Desarrollo Web",svc:"Tiendas online (e-commerce)",desc:"Plataformas de venta"},
+  {code:"DIS-DES-004",cat:"DISEÑO DIGITAL",sub:"Desarrollo Web",svc:"Portales web",desc:"Sitios web complejos"},
+  {code:"DIS-DES-005",cat:"DISEÑO DIGITAL",sub:"Desarrollo Web",svc:"Aplicaciones web",desc:"Apps basadas en web"},
+
+  {code:"DIS-APL-001",cat:"DISEÑO DIGITAL",sub:"Aplicaciones Móviles",svc:"Prototipos de aplicaciones",desc:"Diseño de apps móviles"},
+  {code:"DIS-APL-002",cat:"DISEÑO DIGITAL",sub:"Aplicaciones Móviles",svc:"Diseño iOS",desc:"Apps para Apple"},
+  {code:"DIS-APL-003",cat:"DISEÑO DIGITAL",sub:"Aplicaciones Móviles",svc:"Diseño Android",desc:"Apps para Android"},
+
+  {code:"DIS-OPT-001",cat:"DISEÑO DIGITAL",sub:"Optimización Web",svc:"Optimización de velocidad",desc:"Performance web"},
+  {code:"DIS-OPT-002",cat:"DISEÑO DIGITAL",sub:"Optimización Web",svc:"Responsive design",desc:"Adaptación a dispositivos"},
+  {code:"DIS-OPT-003",cat:"DISEÑO DIGITAL",sub:"Optimización Web",svc:"Accesibilidad digital",desc:"WCAG compliance"},
+
+  {code:"DIS-SEO-001",cat:"DISEÑO DIGITAL",sub:"SEO/SEM",svc:"Consultoría SEO",desc:"Posicionamiento en buscadores"},
+  {code:"DIS-SEO-002",cat:"DISEÑO DIGITAL",sub:"SEO/SEM",svc:"SEO Copywriting",desc:"Textos optimizados para SEO"},
+  {code:"DIS-SEO-003",cat:"DISEÑO DIGITAL",sub:"SEO/SEM",svc:"Estrategia SEM",desc:"Google Ads y publicidad digital"},
+
+  // CONTENIDO DIGITAL
+  {code:"CON-COM-001",cat:"CONTENIDO DIGITAL",sub:"Community Management",svc:"Gestión de comunidades",desc:"Administración de redes sociales"},
+  {code:"CON-COM-002",cat:"CONTENIDO DIGITAL",sub:"Community Management",svc:"Community manager",desc:"Moderación y participación"},
+
+  {code:"CON-EST-001",cat:"CONTENIDO DIGITAL",sub:"Estrategia de Contenido",svc:"Estrategia de contenido",desc:"Plan de contenidos"},
+  {code:"CON-EST-002",cat:"CONTENIDO DIGITAL",sub:"Estrategia de Contenido",svc:"Calendario editorial",desc:"Planificación de publicaciones"},
+  {code:"CON-EST-003",cat:"CONTENIDO DIGITAL",sub:"Estrategia de Contenido",svc:"Copywriting",desc:"Redacción profesional"},
+
+  {code:"CON-RED-001",cat:"CONTENIDO DIGITAL",sub:"Redes Sociales",svc:"Posts para redes sociales",desc:"Diseño de posts"},
+  {code:"CON-RED-002",cat:"CONTENIDO DIGITAL",sub:"Redes Sociales",svc:"Stories y Reels",desc:"Contenido efímero y videos cortos"},
+  {code:"CON-RED-003",cat:"CONTENIDO DIGITAL",sub:"Redes Sociales",svc:"Línea gráfica para redes",desc:"Identidad visual consistente"},
+  {code:"CON-RED-004",cat:"CONTENIDO DIGITAL",sub:"Redes Sociales",svc:"Banners publicitarios",desc:"Banners para campañas"},
+  {code:"CON-RED-005",cat:"CONTENIDO DIGITAL",sub:"Redes Sociales",svc:"Carruseles interactivos",desc:"Posts con múltiples imágenes"},
+
+  {code:"CON-EMA-001",cat:"CONTENIDO DIGITAL",sub:"Email Marketing",svc:"Diseño de campañas email",desc:"Templates de email"},
+  {code:"CON-EMA-002",cat:"CONTENIDO DIGITAL",sub:"Email Marketing",svc:"Newsletter diseño",desc:"Boletines profesionales"},
+
+  {code:"CON-INF-001",cat:"CONTENIDO DIGITAL",sub:"Infografías",svc:"Infografías",desc:"Visualización de datos"},
+  {code:"CON-INF-002",cat:"CONTENIDO DIGITAL",sub:"Infografías",svc:"Gráficos estadísticos",desc:"Charts y gráficos"},
+
+  // FOTOGRAFÍA
+  {code:"FOT-FOT-001",cat:"FOTOGRAFÍA",sub:"Fotografía Profesional",svc:"Fotografía de producto",desc:"Fotos de productos para catálogo"},
+  {code:"FOT-FOT-002",cat:"FOTOGRAFÍA",sub:"Fotografía Profesional",svc:"Fotografía corporativa",desc:"Fotos de equipo y oficina"},
+  {code:"FOT-FOT-003",cat:"FOTOGRAFÍA",sub:"Fotografía Profesional",svc:"Fotografía de eventos",desc:"Cobertura de eventos"},
+  {code:"FOT-FOT-004",cat:"FOTOGRAFÍA",sub:"Fotografía Profesional",svc:"Fotografía gastronómica",desc:"Fotos de comida y bebidas"},
+  {code:"FOT-RET-001",cat:"FOTOGRAFÍA",sub:"Retoque Digital",svc:"Retoque fotográfico",desc:"Edición de fotos"},
+  {code:"FOT-RET-002",cat:"FOTOGRAFÍA",sub:"Retoque Digital",svc:"Montaje fotográfico",desc:"Composición de imágenes"},
+  {code:"FOT-RET-003",cat:"FOTOGRAFÍA",sub:"Retoque Digital",svc:"Colorización",desc:"Edición de color profesional"},
+
+  // ILUSTRACIÓN & ARTE DIGITAL
+  {code:"ILU-ILU-001",cat:"ILUSTRACIÓN & ARTE DIGITAL",sub:"Ilustración",svc:"Ilustración digital profesional",desc:"Arte digital custom"},
+  {code:"ILU-ILU-002",cat:"ILUSTRACIÓN & ARTE DIGITAL",sub:"Ilustración",svc:"Ilustración conceptual",desc:"Conceptos visuales"},
+  {code:"ILU-ILU-003",cat:"ILUSTRACIÓN & ARTE DIGITAL",sub:"Ilustración",svc:"Ilustración artística",desc:"Arte ilustrativo"},
+  {code:"ILU-ILU-004",cat:"ILUSTRACIÓN & ARTE DIGITAL",sub:"Ilustración",svc:"Caricatura",desc:"Caricaturas personalizadas"},
+  {code:"ILU-ICO-001",cat:"ILUSTRACIÓN & ARTE DIGITAL",sub:"Iconografía",svc:"Iconografía",desc:"Conjuntos de iconos"},
+  {code:"ILU-ICO-002",cat:"ILUSTRACIÓN & ARTE DIGITAL",sub:"Iconografía",svc:"Pictogramas",desc:"Símbolos visuales"},
+  {code:"ILU-ART-001",cat:"ILUSTRACIÓN & ARTE DIGITAL",sub:"Arte Vectorial",svc:"Diseño vectorial",desc:"Arte vectorial escalable"},
+  {code:"ILU-ART-002",cat:"ILUSTRACIÓN & ARTE DIGITAL",sub:"Arte Vectorial",svc:"Animaciones vectoriales",desc:"Animaciones estáticas"},
+
+  // ANIMACIÓN & VIDEO
+  {code:"ANI-MOT-001",cat:"ANIMACIÓN & VIDEO",sub:"Motion Graphics",svc:"Motion graphics",desc:"Animaciones para video"},
+  {code:"ANI-MOT-002",cat:"ANIMACIÓN & VIDEO",sub:"Motion Graphics",svc:"Animaciones 2D",desc:"Animaciones bidimensionales"},
+  {code:"ANI-MOT-003",cat:"ANIMACIÓN & VIDEO",sub:"Motion Graphics",svc:"Kinetic typography",desc:"Tipografía animada"},
+  {code:"ANI-VID-001",cat:"ANIMACIÓN & VIDEO",sub:"Video",svc:"Video-intros",desc:"Introducciones de video"},
+  {code:"ANI-VID-002",cat:"ANIMACIÓN & VIDEO",sub:"Video",svc:"Video-outros",desc:"Cierres de video"},
+  {code:"ANI-VID-003",cat:"ANIMACIÓN & VIDEO",sub:"Video",svc:"Videos corporativos",desc:"Videos promocionales"},
+  {code:"ANI-VID-004",cat:"ANIMACIÓN & VIDEO",sub:"Video",svc:"Videos comerciales",desc:"Spots publicitarios"},
+  {code:"ANI-VID-005",cat:"ANIMACIÓN & VIDEO",sub:"Video",svc:"Videos explicativos",desc:"Explainer videos"},
+  {code:"ANI-VID-006",cat:"ANIMACIÓN & VIDEO",sub:"Video",svc:"Videos de producto",desc:"Demostraciones de productos"},
+  {code:"ANI-EDI-001",cat:"ANIMACIÓN & VIDEO",sub:"Edición de Video",svc:"Edición de video profesional",desc:"Post-producción video"},
+  {code:"ANI-EDI-002",cat:"ANIMACIÓN & VIDEO",sub:"Edición de Video",svc:"Colorización de video",desc:"Color grading"},
+  {code:"ANI-EDI-003",cat:"ANIMACIÓN & VIDEO",sub:"Edición de Video",svc:"Subtitulado",desc:"Subtítulos en video"},
+  {code:"ANI-AUD-001",cat:"ANIMACIÓN & VIDEO",sub:"Audio",svc:"Locución profesional",desc:"Voces en off"},
+  {code:"ANI-AUD-002",cat:"ANIMACIÓN & VIDEO",sub:"Audio",svc:"Diseño de sonido",desc:"Sonorización profesional"},
+  {code:"ANI-AUD-003",cat:"ANIMACIÓN & VIDEO",sub:"Audio",svc:"Música y soundtrack",desc:"Composición musical"},
+  {code:"ANI-3D-001",cat:"ANIMACIÓN & VIDEO",sub:"3D",svc:"Renders 3D",desc:"Imágenes 3D fotorrealistas"},
+  {code:"ANI-3D-002",cat:"ANIMACIÓN & VIDEO",sub:"3D",svc:"Animación 3D",desc:"Animaciones tridimensionales"},
+  {code:"ANI-3D-003",cat:"ANIMACIÓN & VIDEO",sub:"3D",svc:"Modelado 3D",desc:"Modelos tridimensionales"},
+  {code:"ANI-3D-004",cat:"ANIMACIÓN & VIDEO",sub:"3D",svc:"Visualización arquitectónica",desc:"Renders de proyectos"},
+  {code:"ANI-VFX-001",cat:"ANIMACIÓN & VIDEO",sub:"VFX",svc:"Efectos visuales (VFX)",desc:"Compositing y efectos"},
+
+  // IMPRESIÓN COMERCIAL
+  {code:"IMP-PRO-001",cat:"IMPRESIÓN COMERCIAL",sub:"Promocionales",svc:"Flyers y volantes",desc:"Volantes publicitarios"},
+  {code:"IMP-PRO-002",cat:"IMPRESIÓN COMERCIAL",sub:"Promocionales",svc:"Dípticos y trípticos",desc:"Folletos doblados"},
+  {code:"IMP-PRO-003",cat:"IMPRESIÓN COMERCIAL",sub:"Promocionales",svc:"Folletos técnicos",desc:"Documentos informativos"},
+  {code:"IMP-EDI-001",cat:"IMPRESIÓN COMERCIAL",sub:"Editorial",svc:"Libros y novelas",desc:"Edición de libros"},
+  {code:"IMP-EDI-002",cat:"IMPRESIÓN COMERCIAL",sub:"Editorial",svc:"Revistas y catálogos",desc:"Publicaciones periódicas"},
+  {code:"IMP-EDI-003",cat:"IMPRESIÓN COMERCIAL",sub:"Editorial",svc:"Anuarios",desc:"Publicaciones anuales"},
+  {code:"IMP-EDI-004",cat:"IMPRESIÓN COMERCIAL",sub:"Editorial",svc:"Fanzines",desc:"Publicaciones alternativas"},
+  {code:"IMP-EDI-005",cat:"IMPRESIÓN COMERCIAL",sub:"Editorial",svc:"Comics",desc:"Cómics y historias gráficas"},
+  {code:"IMP-CAR-001",cat:"IMPRESIÓN COMERCIAL",sub:"Cartelería",svc:"Carteles y afiches",desc:"Pósters impresos"},
+  {code:"IMP-CAR-002",cat:"IMPRESIÓN COMERCIAL",sub:"Cartelería",svc:"Calendarios",desc:"Calendarios personalizados"},
+  {code:"IMP-HOS-001",cat:"IMPRESIÓN COMERCIAL",sub:"Hostelería",svc:"Menús",desc:"Diseño de menús"},
+  {code:"IMP-HOS-002",cat:"IMPRESIÓN COMERCIAL",sub:"Hostelería",svc:"Cartas de vinos",desc:"Menús especializados"},
+  {code:"IMP-HOS-003",cat:"IMPRESIÓN COMERCIAL",sub:"Hostelería",svc:"Posavasos",desc:"Materiales promocionales"},
+  {code:"IMP-HOS-004",cat:"IMPRESIÓN COMERCIAL",sub:"Hostelería",svc:"Servilletas personalizadas",desc:"Materiales de servicio"},
+
+  // MERCHANDISING
+  {code:"MER-PAP-001",cat:"MERCHANDISING",sub:"Papelería Merchandise",svc:"Libretas artesanales",desc:"Cuadernos personalizados"},
+  {code:"MER-PAP-002",cat:"MERCHANDISING",sub:"Papelería Merchandise",svc:"Agendas",desc:"Agendas anuales"},
+  {code:"MER-PAP-003",cat:"MERCHANDISING",sub:"Papelería Merchandise",svc:"Planificadores",desc:"Planners personalizados"},
+  {code:"MER-PAP-004",cat:"MERCHANDISING",sub:"Papelería Merchandise",svc:"Botellas personalizadas",desc:"Botellas de agua"},
+  {code:"MER-ADH-001",cat:"MERCHANDISING",sub:"Adhesivos",svc:"Stickers die-cut",desc:"Stickers recortados"},
+  {code:"MER-ADH-002",cat:"MERCHANDISING",sub:"Adhesivos",svc:"Stickers kiss-cut",desc:"Stickers de decal"},
+  {code:"MER-ADH-003",cat:"MERCHANDISING",sub:"Adhesivos",svc:"Pegatinas de vinilo",desc:"Vinilos adhesivos"},
+  {code:"MER-ACC-001",cat:"MERCHANDISING",sub:"Accesorios",svc:"Pins",desc:"Pines y broches"},
+  {code:"MER-ACC-002",cat:"MERCHANDISING",sub:"Accesorios",svc:"Llaveros",desc:"Llaveros personalizados"},
+  {code:"MER-ACC-003",cat:"MERCHANDISING",sub:"Accesorios",svc:"Parches",desc:"Parches bordados"},
+  {code:"MER-ACC-004",cat:"MERCHANDISING",sub:"Accesorios",svc:"Pulseras",desc:"Pulseras personalizadas"},
+  {code:"MER-TEX-001",cat:"MERCHANDISING",sub:"Textil",svc:"Tote bags",desc:"Bolsas de tela"},
+  {code:"MER-TEX-002",cat:"MERCHANDISING",sub:"Textil",svc:"Playeras",desc:"Camisetas personalizadas"},
+  {code:"MER-TEX-003",cat:"MERCHANDISING",sub:"Textil",svc:"Gorras",desc:"Gorras personalizadas"},
+  {code:"MER-TEX-004",cat:"MERCHANDISING",sub:"Textil",svc:"Hoodies",desc:"Sudaderas personalizadas"},
+  {code:"MER-TEX-005",cat:"MERCHANDISING",sub:"Textil",svc:"Mochilas",desc:"Mochilas personalizadas"},
+
+  // repetidos (DUP)
+  {code:"MER-ACC-001",cat:"MERCHANDISING",sub:"Accesorios de Oficina",svc:"Tazas personalizadas",desc:"Tazas de cerámica"},
+  {code:"MER-ACC-002",cat:"MERCHANDISING",sub:"Accesorios de Oficina",svc:"Mousepad",desc:"Pads para ratón"},
+  {code:"MER-ACC-003",cat:"MERCHANDISING",sub:"Accesorios de Oficina",svc:"Fundas para laptop",desc:"Fundas protectoras"},
+
+  // PACKAGING
+  {code:"PAC-EST-001",cat:"PACKAGING",sub:"Estructura",svc:"Cajas plegadizas",desc:"Cajas troqueladas"},
+  {code:"PAC-EST-002",cat:"PACKAGING",sub:"Estructura",svc:"Cajas de envío",desc:"Cajas para transporte"},
+  {code:"PAC-EST-003",cat:"PACKAGING",sub:"Estructura",svc:"Tubos",desc:"Empaques tubulares"},
+  {code:"PAC-EST-004",cat:"PACKAGING",sub:"Estructura",svc:"Dielines",desc:"Plantillas de corte"},
+  {code:"PAC-DIS-001",cat:"PACKAGING",sub:"Diseño Premium",svc:"Packaging edición limitada",desc:"Empaques especiales"},
+  {code:"PAC-DIS-002",cat:"PACKAGING",sub:"Diseño Premium",svc:"Mockups 3D",desc:"Visualización 3D de diseños"},
+  {code:"PAC-DIS-003",cat:"PACKAGING",sub:"Diseño Premium",svc:"Asesoría de materiales",desc:"Consultoría de materiales"},
+  {code:"PAC-ETI-001",cat:"PACKAGING",sub:"Etiquetado",svc:"Etiquetas en rollo",desc:"Etiquetas impresas"},
+  {code:"PAC-ETI-002",cat:"PACKAGING",sub:"Etiquetado",svc:"Hang tags",desc:"Etiquetas colgantes"},
+  {code:"PAC-ETI-003",cat:"PACKAGING",sub:"Etiquetado",svc:"Stickers",desc:"Stickers para productos"},
+  {code:"PAC-ETI-004",cat:"PACKAGING",sub:"Etiquetado",svc:"Timbre de marca",desc:"Sellos personalizados"},
+
+  // GRAN FORMATO
+  {code:"GRA-LON-001",cat:"GRAN FORMATO",sub:"Lonas y Lona Publicitaria",svc:"Lonas",desc:"Impresión en lona"},
+  {code:"GRA-LON-002",cat:"GRAN FORMATO",sub:"Lonas y Lona Publicitaria",svc:"Roll-ups",desc:"Roll-ups publicitarios"},
+  {code:"GRA-LON-003",cat:"GRAN FORMATO",sub:"Lonas y Lona Publicitaria",svc:"X-Banners",desc:"Banners tipo X"},
+  {code:"GRA-LON-004",cat:"GRAN FORMATO",sub:"Lonas y Lona Publicitaria",svc:"Microperforados",desc:"Lonas perforadas"},
+  {code:"GRA-SEÑ-001",cat:"GRAN FORMATO",sub:"Señalética",svc:"Señalética exterior",desc:"Señales exteriores"},
+  {code:"GRA-SEÑ-002",cat:"GRAN FORMATO",sub:"Señalética",svc:"Señalética interior",desc:"Señales interiores"},
+  {code:"GRA-SEÑ-003",cat:"GRAN FORMATO",sub:"Señalética",svc:"Directorios",desc:"Mapas y directorios"},
+  {code:"GRA-VIN-001",cat:"GRAN FORMATO",sub:"Vinilos",svc:"Vinilos pared",desc:"Vinilos decorativos"},
+  {code:"GRA-VIN-002",cat:"GRAN FORMATO",sub:"Vinilos",svc:"Vinilos esmerilados",desc:"Vinilos opacos/frosted"},
+  {code:"GRA-VIN-003",cat:"GRAN FORMATO",sub:"Vinilos",svc:"Vinilos de seguridad",desc:"Vinilos anti-impacto"},
+  {code:"GRA-DEC-001",cat:"GRAN FORMATO",sub:"Decoración Mural",svc:"Canvas",desc:"Impresión en lienzo"},
+  {code:"GRA-DEC-002",cat:"GRAN FORMATO",sub:"Decoración Mural",svc:"Murales",desc:"Murales decorativos"},
+  {code:"GRA-DEC-003",cat:"GRAN FORMATO",sub:"Decoración Mural",svc:"Papel tapiz",desc:"Papel para paredes"},
+  {code:"GRA-EXH-001",cat:"GRAN FORMATO",sub:"Exhibición",svc:"Stands",desc:"Stands para ferias"},
+  {code:"GRA-EXH-002",cat:"GRAN FORMATO",sub:"Exhibición",svc:"Displays POP",desc:"Displays de punto de venta"},
+  {code:"GRA-EXH-003",cat:"GRAN FORMATO",sub:"Exhibición",svc:"Mostradores",desc:"Mostradores personalizados"},
+  {code:"GRA-VEH-001",cat:"GRAN FORMATO",sub:"Vehículos",svc:"Rotulación",desc:"Vinilado de vehículos"},
+  {code:"GRA-VEH-002",cat:"GRAN FORMATO",sub:"Vehículos",svc:"Envolturas de vehículos",desc:"Vehicle wraps"},
+  {code:"GRA-VEH-003",cat:"GRAN FORMATO",sub:"Vehículos",svc:"Logos de vehículos",desc:"Diseño de logos"},
+
+  // ACABADOS ESPECIALES
+  {code:"ACA-PRO-001",cat:"ACABADOS ESPECIALES",sub:"Protección",svc:"Laminado mate",desc:"Laminado matte"},
+  {code:"ACA-PRO-002",cat:"ACABADOS ESPECIALES",sub:"Protección",svc:"Laminado brillante",desc:"Laminado gloss"},
+  {code:"ACA-PRO-003",cat:"ACABADOS ESPECIALES",sub:"Protección",svc:"Soft touch",desc:"Acabado táctil"},
+  {code:"ACA-EFE-001",cat:"ACABADOS ESPECIALES",sub:"Efectos Visuales",svc:"Barniz UV",desc:"Barniz ultravioleta selectivo"},
+  {code:"ACA-EFE-002",cat:"ACABADOS ESPECIALES",sub:"Efectos Visuales",svc:"Hot stamping",desc:"Estampado en caliente"},
+  {code:"ACA-EFE-003",cat:"ACABADOS ESPECIALES",sub:"Efectos Visuales",svc:"Embossing",desc:"Relieve en papel"},
+  {code:"ACA-ACA-001",cat:"ACABADOS ESPECIALES",sub:"Acabados Especiales",svc:"Troquelado",desc:"Corte personalizado"},
+  {code:"ACA-ACA-002",cat:"ACABADOS ESPECIALES",sub:"Acabados Especiales",svc:"Encuadernación hot-melt",desc:"Pegado en línea"},
+  {code:"ACA-ACA-003",cat:"ACABADOS ESPECIALES",sub:"Acabados Especiales",svc:"Encuadernación cosida",desc:"Costura profesional"},
+  {code:"ACA-IMP-001",cat:"ACABADOS ESPECIALES",sub:"Impresión Especializada",svc:"Serigrafia",desc:"Impresión de pantalla"},
+  {code:"ACA-IMP-002",cat:"ACABADOS ESPECIALES",sub:"Impresión Especializada",svc:"Estampado digital",desc:"Impresión por inyección"},
+  {code:"ACA-IMP-003",cat:"ACABADOS ESPECIALES",sub:"Impresión Especializada",svc:"Sublimación",desc:"Impresión por sublimación"},
+  {code:"ACA-IMP-004",cat:"ACABADOS ESPECIALES",sub:"Impresión Especializada",svc:"Corte láser",desc:"Corte con láser"},
+  {code:"ACA-IMP-005",cat:"ACABADOS ESPECIALES",sub:"Impresión Especializada",svc:"Grabado",desc:"Grabado y marcado"},
+  {code:"ACA-IMP-006",cat:"ACABADOS ESPECIALES",sub:"Impresión Especializada",svc:"Impresión 3D",desc:"Manufactura aditiva"},
+
+  // DISEÑO PARA ARTISTAS
+  {code:"DIS-MÚS-001",cat:"DISEÑO PARA ARTISTAS",sub:"Música",svc:"Portadas de sencillos/álbum",desc:"Diseño de carátulas"},
+  {code:"DIS-MÚS-002",cat:"DISEÑO PARA ARTISTAS",sub:"Música",svc:"Visualizers",desc:"Visualizadores musicales"},
+  {code:"DIS-MÚS-003",cat:"DISEÑO PARA ARTISTAS",sub:"Música",svc:"Kits de lanzamiento musical",desc:"Paquete de lanzamiento"},
+  {code:"DIS-MÚS-004",cat:"DISEÑO PARA ARTISTAS",sub:"Música",svc:"Diseño de identidad artística",desc:"Branding de artista"},
+  {code:"DIS-EVE-001",cat:"DISEÑO PARA ARTISTAS",sub:"Eventos",svc:"Flyers para eventos",desc:"Volantes de promoción"},
+  {code:"DIS-EVE-002",cat:"DISEÑO PARA ARTISTAS",sub:"Eventos",svc:"Posters de eventos",desc:"Carteles publicitarios"},
+  {code:"DIS-EVE-003",cat:"DISEÑO PARA ARTISTAS",sub:"Eventos",svc:"Arte para fiestas/cultura",desc:"Diseño para festivales"},
+  {code:"DIS-MER-001",cat:"DISEÑO PARA ARTISTAS",sub:"Merch",svc:"Desarrollo de merch para artistas",desc:"Merchandise musical"},
+  {code:"DIS-MER-002",cat:"DISEÑO PARA ARTISTAS",sub:"Merch",svc:"Diseño de ropa de banda",desc:"Ropa artística"},
+
+  // SERVICIOS COMPLEMENTARIOS
+  {code:"SER-LOC-001",cat:"SERVICIOS COMPLEMENTARIOS",sub:"Localización",svc:"Traducción",desc:"Servicios de traducción"},
+  {code:"SER-LOC-002",cat:"SERVICIOS COMPLEMENTARIOS",sub:"Localización",svc:"Localización",desc:"Adaptación cultural"},
+  {code:"SER-TRA-001",cat:"SERVICIOS COMPLEMENTARIOS",sub:"Transcripción",svc:"Transcripción de audio",desc:"Transcripción profesional"},
+  {code:"SER-CON-001",cat:"SERVICIOS COMPLEMENTARIOS",sub:"Consultoría Digital",svc:"Auditoría digital",desc:"Análisis de presencia online"},
+  {code:"SER-CON-002",cat:"SERVICIOS COMPLEMENTARIOS",sub:"Consultoría Digital",svc:"Estrategia digital",desc:"Plan digital integral"},
+  {code:"SER-CON-003",cat:"SERVICIOS COMPLEMENTARIOS",sub:"Consultoría Digital",svc:"Transformación digital",desc:"Digitalización de procesos"},
+];
+
+/** =========================
+ *  Utilidades / Estado
+ *  ========================= */
+const $ = (sel) => document.querySelector(sel);
+
+const tbody = $("#tbody");
+const q = $("#q");
+const catSel = $("#cat");
+const subSel = $("#sub");
+const onlyDup = $("#onlyDup");
+const countEl = $("#count");
+const dupCountEl = $("#dupCount");
+const toast = $("#toast");
+
+// modal
+const vDialog = $("#variantsDialog");
+const vTitle = $("#vTitle");
+const vBody = $("#vBody");
+const tplSel = $("#tpl");
+const applyTplBtn = $("#applyTpl");
+const appendTplBtn = $("#appendTpl");
+const addVarBtn = $("#addVar");
+const closeVarBtn = $("#closeVar");
+const vSearch = $("#vSearch");
+const svcNotes = $("#svcNotes");
+
+let activeVarKey = null;
+let vSearchValue = "";
+
+function stripAccents(s=""){
+  return s.normalize("NFD").replace(/\p{Diacritic}/gu, "");
+}
+function norm(s=""){ return stripAccents(String(s)).toLowerCase().trim(); }
+
+function toastMsg(msg){
+  toast.textContent = msg;
+  toast.classList.add("show");
+  setTimeout(()=>toast.classList.remove("show"), 950);
+}
+
+function uniq(arr){ return [...new Set(arr)].sort((a,b)=>a.localeCompare(b,'es')); }
+
+function escapeHtml(str){
+  return String(str)
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+}
+
+function trunc(str, n=170){
+  const s = String(str ?? "").replaceAll("\n"," ").trim();
+  if(!s) return "";
+  return s.length > n ? s.slice(0, n-1) + "…" : s;
+}
+
+/** Duplicados por code */
+const codeFreq = baseServices.reduce((acc, it)=> (acc[it.code]=(acc[it.code]||0)+1, acc), {});
+const dupCount = Object.entries(codeFreq).filter(([,n])=>n>1).length;
+dupCountEl.textContent = String(dupCount);
+
+/** =========================
+ *  Persistencia
+ *  ========================= */
+const LS_KEY = "svcMeta_v3"; // nuevo esquema
+function itemKey(it){ return `${it.code}||${it.cat}||${it.sub}||${it.svc}`; }
+
+function loadMeta(){
+  try{ return JSON.parse(localStorage.getItem(LS_KEY) || "{}"); }catch{ return {}; }
+}
+function saveMeta(meta){
+  localStorage.setItem(LS_KEY, JSON.stringify(meta));
+}
+let meta = loadMeta();
+
+function ensureMetaKey(key){
+  if(!meta[key]) meta[key] = {};
+  if(!Array.isArray(meta[key].variants)) meta[key].variants = [];
+  if(typeof meta[key].serviceNotes !== "string") meta[key].serviceNotes = "";
+  return meta[key];
+}
+
+/** =========================
+ *  Dropdowns
+ *  ========================= */
+function fillCategories(){
+  const cats = uniq(baseServices.map(x=>x.cat));
+  cats.forEach(c=>{
+    const opt = document.createElement("option");
+    opt.value = c; opt.textContent = c;
+    catSel.appendChild(opt);
+  });
+}
+function fillSubcategories(){
+  subSel.innerHTML = `<option value="">Todas</option>`;
+  const cat = catSel.value;
+  const subs = uniq(baseServices.filter(x=>!cat || x.cat===cat).map(x=>x.sub));
+  subs.forEach(s=>{
+    const opt = document.createElement("option");
+    opt.value = s; opt.textContent = s;
+    subSel.appendChild(opt);
+  });
+}
+
+/** =========================
+ *  Filtro actual
+ *  ========================= */
+function currentFiltered(){
+  const nq = norm(q.value);
+  const cat = catSel.value;
+  const sub = subSel.value;
+  const dupOnly = onlyDup.checked;
+
+  return baseServices
+    .filter(it => (!cat || it.cat===cat))
+    .filter(it => (!sub || it.sub===sub))
+    .filter(it => (!dupOnly || codeFreq[it.code] > 1))
+    .filter(it => {
+      if(!nq) return true;
+      const hay = norm([it.code,it.cat,it.sub,it.svc,it.desc].join(" | "));
+      return hay.includes(nq);
+    })
+    .sort((a,b)=>a.code.localeCompare(b.code,'es'));
+}
+
+/** =========================
+ *  Variaciones (plantillas)
+ *  ========================= */
+function templateVariants(type){
+  const sheet = ({medida, color, unidad}) =>
+    `Medida: ${medida} · Unidad: ${unidad} · Color: ${color} · Papel: [PAPEL] · Gramaje: [GRAMAJE] · Acabado: [ACABADO] · Tiempo de producción: [TIEMPO_PRODUCCION] · Tiempo de entrega: [TIEMPO_ENTREGA] · Observaciones: [NOTAS]`;
+
+  switch(type){
+    case "DTF_BASE":
+      return [
+        { name:"XS · hasta 10×10 cm", price:"[PRECIO]", unit:"por transfer", notes: sheet({medida:"Hasta 10×10 cm", color:"CMYK", unidad:"por transfer"}) },
+        { name:"S · hasta 15×15 cm",  price:"[PRECIO]", unit:"por transfer", notes: sheet({medida:"Hasta 15×15 cm", color:"CMYK", unidad:"por transfer"}) },
+        { name:"M · hasta 20×25 cm",  price:"[PRECIO]", unit:"por transfer", notes: sheet({medida:"Hasta 20×25 cm", color:"CMYK", unidad:"por transfer"}) },
+        { name:"L · hasta 30×30 cm",  price:"[PRECIO]", unit:"por transfer", notes: sheet({medida:"Hasta 30×30 cm", color:"CMYK", unidad:"por transfer"}) },
+        { name:"XL · hasta 33×48 cm", price:"[PRECIO]", unit:"por transfer", notes: sheet({medida:"Hasta 33×48 cm", color:"CMYK", unidad:"por transfer"}) },
+        { name:"Metro lineal · 100×58 cm", price:"[380–480]", unit:"por metro", notes: sheet({medida:"100×58 cm", color:"CMYK", unidad:"por metro"}) },
+        { name:"Medida especial", price:"[0.10/cm²]", unit:"por cm²", notes: sheet({medida:"[MEDIDA]", color:"CMYK", unidad:"por cm²"}) },
+      ];
+
+    case "FLYER_OFFSET_1000": {
+      const unidad = "por 1000 pzas";
+      return [
+        { name:"Cuarto carta · 4x1 (CMYK/—)", price:"[PRECIO]", unit:unidad, notes: sheet({medida:"Cuarto carta [MEDIDA]", color:"4x1 (CMYK/—) tiro/retiro", unidad}) },
+        { name:"Cuarto carta · 4x4 (CMYK/CMYK)", price:"[PRECIO]", unit:unidad, notes: sheet({medida:"Cuarto carta [MEDIDA]", color:"4x4 (CMYK/CMYK) tiro/retiro", unidad}) },
+
+        { name:"Media carta · 4x1 (CMYK/—)",  price:"[PRECIO]", unit:unidad, notes: sheet({medida:"Media carta [MEDIDA]", color:"4x1 (CMYK/—) tiro/retiro", unidad}) },
+        { name:"Media carta · 4x4 (CMYK/CMYK)",  price:"[PRECIO]", unit:unidad, notes: sheet({medida:"Media carta [MEDIDA]", color:"4x4 (CMYK/CMYK) tiro/retiro", unidad}) },
+
+        { name:"Carta · 4x1 (CMYK/—)",        price:"[PRECIO]", unit:unidad, notes: sheet({medida:"Carta [MEDIDA]", color:"4x1 (CMYK/—) tiro/retiro", unidad}) },
+        { name:"Carta · 4x4 (CMYK/CMYK)",        price:"[PRECIO]", unit:unidad, notes: sheet({medida:"Carta [MEDIDA]", color:"4x4 (CMYK/CMYK) tiro/retiro", unidad}) },
+      ];
+    }
+
+    case "PLAYERA_TALLAS":
+      return [
+        { name:"Talla S", price:"[PRECIO]", unit:"por pieza", notes: sheet({medida:"Talla S", color:"[COLOR_IMPRESION] / Prenda: [COLOR_PRENDA]", unidad:"por pieza"}) },
+        { name:"Talla M", price:"[PRECIO]", unit:"por pieza", notes: sheet({medida:"Talla M", color:"[COLOR_IMPRESION] / Prenda: [COLOR_PRENDA]", unidad:"por pieza"}) },
+        { name:"Talla L", price:"[PRECIO]", unit:"por pieza", notes: sheet({medida:"Talla L", color:"[COLOR_IMPRESION] / Prenda: [COLOR_PRENDA]", unidad:"por pieza"}) },
+        { name:"Talla XL", price:"[PRECIO]", unit:"por pieza", notes: sheet({medida:"Talla XL", color:"[COLOR_IMPRESION] / Prenda: [COLOR_PRENDA]", unidad:"por pieza"}) },
+        { name:"Talla XXL", price:"[PRECIO]", unit:"por pieza", notes: sheet({medida:"Talla XXL", color:"[COLOR_IMPRESION] / Prenda: [COLOR_PRENDA]", unidad:"por pieza"}) },
+      ];
+
+    case "ESTRATEGIA_BPP":
+      return [
+        { name:"Básico",  price:"[PRECIO]", unit:"por proyecto", notes: sheet({medida:"Paquete Básico", color:"N/A", unidad:"por proyecto"}) + " · Alcance: [ALCANCE] · Revisiones: [REVISIONES]" },
+        { name:"Pro",     price:"[PRECIO]", unit:"por proyecto", notes: sheet({medida:"Paquete Pro", color:"N/A", unidad:"por proyecto"}) + " · Alcance: [ALCANCE] · Revisiones: [REVISIONES]" },
+        { name:"Premium", price:"[PRECIO]", unit:"por proyecto", notes: sheet({medida:"Paquete Premium", color:"N/A", unidad:"por proyecto"}) + " · Alcance: [ALCANCE] · Revisiones: [REVISIONES]" },
+      ];
+
+    default:
+      return [];
+  }
+}
+
+/** =========================
+ *  Modal Variaciones
+ *  ========================= */
+function openVariants(key, title){
+  activeVarKey = key;
+  vTitle.textContent = title;
+
+  const m = ensureMetaKey(activeVarKey);
+  svcNotes.value = m.serviceNotes || "";
+  vSearch.value = "";
+  vSearchValue = "";
+
+  renderVariants();
+  vDialog.showModal();
+}
+
+function renderVariants(){
+  const vars = meta[activeVarKey]?.variants || [];
+  vBody.innerHTML = "";
+
+  const qv = norm(vSearchValue);
+
+  vars.forEach((v, idx) => {
+    const hay = norm([v.name, v.price, v.unit, v.notes].join(" | "));
+    const match = !qv || hay.includes(qv);
+
+    const tr = document.createElement("tr");
+    if(!match) tr.hidden = true;
+
+    tr.innerHTML = `
+      <td><input class="vedit" data-vidx="${idx}" data-vfield="name" placeholder="Ej. Cuarto carta · 4x4 (CMYK/CMYK)" value="${escapeHtml(v.name ?? "")}"></td>
+      <td><input class="vedit" data-vidx="${idx}" data-vfield="price" inputmode="decimal" placeholder="Ej. 2500 / 380–480 / 0.10/cm²" value="${escapeHtml(v.price ?? "")}"></td>
+      <td><input class="vedit" data-vidx="${idx}" data-vfield="unit" placeholder="Ej. por 1000 pzas / por pieza / por metro" value="${escapeHtml(v.unit ?? "")}"></td>
+      <td><textarea class="vedit" data-vidx="${idx}" data-vfield="notes" placeholder="Ficha técnica…">${escapeHtml(v.notes ?? "")}</textarea></td>
+      <td>
+        <div class="row" style="justify-content:flex-end; gap:8px;">
+          <button type="button" class="btn btn-mini" data-vup="${idx}" ${idx===0 ? "disabled" : ""}>Subir</button>
+          <button type="button" class="btn btn-mini" data-vdown="${idx}" ${idx===vars.length-1 ? "disabled" : ""}>Bajar</button>
+          <button type="button" class="btn btn-mini" data-vdup="${idx}">Duplicar</button>
+          <button type="button" class="btn danger btn-mini" data-vremove="${idx}">Quitar</button>
+        </div>
+      </td>
+    `;
+    vBody.appendChild(tr);
+  });
+}
+
+/** =========================
+ *  Render tabla principal
+ *  ========================= */
+function render(){
+  const list = currentFiltered();
+  countEl.textContent = String(list.length);
+  tbody.innerHTML = "";
+
+  const frag = document.createDocumentFragment();
+  let rowN = 0;
+
+  for(const it of list){
+    const key = itemKey(it);
+    const m = ensureMetaKey(key);
+    const isDup = codeFreq[it.code] > 1;
+    const variants = m.variants || [];
+    const vlistId = `vlist_${rowN++}`;
+
+    const preview = variants.slice(0,2).map(v=>{
+      const p = (v.price ?? "").toString().trim();
+      return `${v.name || "—"}${p ? ` — $${p}` : ""}`;
+    }).join("<br>");
+
+    const listHtml = variants.map(v=>{
+      const p = (v.price ?? "").toString().trim();
+      const u = (v.unit ?? "").toString().trim();
+      const notes = trunc(v.notes ?? "", 160);
+      return `
+        <div class="vitem">
+          <div class="top">
+            <div class="vname">${escapeHtml(v.name || "—")}</div>
+            <div class="vmeta">${p ? "$"+escapeHtml(p) : ""}${(p && u) ? " · " : ""}${escapeHtml(u)}</div>
+          </div>
+          ${notes ? `<div class="mini" style="margin-top:6px;">${escapeHtml(notes)}</div>` : ``}
+        </div>
+      `;
+    }).join("");
+
+    const tr = document.createElement("tr");
+
+    const tdCode = document.createElement("td");
+    tdCode.innerHTML = `
+      <div class="code">
+        <span>${escapeHtml(it.code)}</span>
+        ${isDup ? `<span class="tag dup">DUP</span>` : ``}
+      </div>
+      <div style="margin-top:8px;">
+        <button class="copy" data-copy="${escapeHtml(it.code)}">COPIAR</button>
+      </div>
+    `;
+    tr.appendChild(tdCode);
+
+    const tdCat = document.createElement("td");
+    tdCat.innerHTML = `<span class="tag"><span class="bar"></span><span>${escapeHtml(it.cat)}</span></span>`;
+    tr.appendChild(tdCat);
+
+    const tdSub = document.createElement("td");
+    tdSub.textContent = it.sub;
+    tr.appendChild(tdSub);
+
+    const tdSvc = document.createElement("td");
+    tdSvc.innerHTML = `
+      <div class="svc">${escapeHtml(it.svc)}</div>
+      <div class="mini" style="margin-top:6px;">${escapeHtml(it.desc || "—")}</div>
+    `;
+    tr.appendChild(tdSvc);
+
+    const tdVar = document.createElement("td");
+    const canView = variants.length > 0;
+    tdVar.innerHTML = `
+      <div class="row" style="gap:8px; align-items:flex-start;">
+        <span class="tag"><span class="bar"></span><span>${variants.length} vars</span></span>
+
+        <button class="btn btn-mini" data-toggle="${vlistId}" aria-expanded="false" ${canView ? "" : "disabled"}>
+          Ver todas
+        </button>
+
+        <button class="btn btn-mini" data-variants="${escapeHtml(key)}"
+          data-title="${escapeHtml(it.code)} · ${escapeHtml(it.svc)}">
+          Editar
+        </button>
+      </div>
+
+      <div class="mini" style="margin-top:8px;">${preview || "—"}</div>
+
+      <div id="${vlistId}" class="vlist" hidden>
+        ${m.serviceNotes ? `<div class="mini" style="margin-bottom:10px;"><strong>Notas globales:</strong> ${escapeHtml(trunc(m.serviceNotes, 260))}</div>` : ``}
+        ${listHtml || `<div class="mini">Sin variaciones.</div>`}
+      </div>
+    `;
+    tr.appendChild(tdVar);
+
+    frag.appendChild(tr);
+  }
+
+  tbody.appendChild(frag);
+}
+
+/** =========================
+ *  Eventos (tabla principal)
+ *  ========================= */
+document.addEventListener("click", async (e)=>{
+  // Toggle ver todas
+  const tBtn = e.target.closest("[data-toggle]");
+  if(tBtn){
+    const id = tBtn.dataset.toggle;
+    const el = document.getElementById(id);
+    if(!el) return;
+
+    const isOpen = !el.hasAttribute("hidden");
+    if(isOpen){
+      el.setAttribute("hidden", "");
+      tBtn.textContent = "Ver todas";
+      tBtn.setAttribute("aria-expanded", "false");
+    }else{
+      el.removeAttribute("hidden");
+      tBtn.textContent = "Ocultar";
+      tBtn.setAttribute("aria-expanded", "true");
+    }
+    return;
+  }
+
+  // Copiar
+  const copyBtn = e.target.closest("[data-copy]");
+  if(copyBtn){
+    const val = copyBtn.getAttribute("data-copy");
+    try{
+      await navigator.clipboard.writeText(val);
+      toastMsg("Código copiado: " + val);
+    }catch{
+      const ta = document.createElement("textarea");
+      ta.value = val; document.body.appendChild(ta);
+      ta.select(); document.execCommand("copy");
+      ta.remove();
+      toastMsg("Código copiado: " + val);
+    }
+    return;
+  }
+
+  // Abrir modal
+  const vBtn = e.target.closest("[data-variants]");
+  if(vBtn){
+    openVariants(vBtn.dataset.variants, vBtn.dataset.title);
+    return;
+  }
+});
+
+q.addEventListener("input", render);
+catSel.addEventListener("change", ()=>{ fillSubcategories(); render(); });
+subSel.addEventListener("change", render);
+onlyDup.addEventListener("change", render);
+
+$("#resetLocal").addEventListener("click", ()=>{
+  if(!confirm("¿Seguro? Esto borra variaciones y notas globales guardadas en este navegador.")) return;
+  localStorage.removeItem(LS_KEY);
+  meta = loadMeta();
+  render();
+  toastMsg("Datos locales reseteados");
+});
+
+/** =========================
+ *  Eventos (modal variaciones)
+ *  ========================= */
+vSearch.addEventListener("input", ()=>{
+  vSearchValue = vSearch.value;
+  renderVariants();
+});
+
+svcNotes.addEventListener("input", ()=>{
+  if(!activeVarKey) return;
+  ensureMetaKey(activeVarKey);
+  meta[activeVarKey].serviceNotes = svcNotes.value;
+  saveMeta(meta);
+  render();
+});
+
+vDialog.addEventListener("input", (e) => {
+  const fieldEl = e.target.closest("[data-vfield]");
+  if(!fieldEl || !activeVarKey) return;
+
+  const idx = Number(fieldEl.dataset.vidx);
+  const field = fieldEl.dataset.vfield;
+
+  ensureMetaKey(activeVarKey);
+  if(!meta[activeVarKey].variants[idx]) meta[activeVarKey].variants[idx] = {name:"",price:"",unit:"",notes:""};
+  meta[activeVarKey].variants[idx][field] = fieldEl.value;
+
+  saveMeta(meta);
+  render();
+});
+
+vDialog.addEventListener("click", (e) => {
+  if(!activeVarKey) return;
+
+  const m = ensureMetaKey(activeVarKey);
+  const vars = m.variants;
+
+  // subir
+  const up = e.target.closest("[data-vup]");
+  if(up){
+    const idx = Number(up.dataset.vup);
+    if(idx > 0){
+      [vars[idx-1], vars[idx]] = [vars[idx], vars[idx-1]];
+      saveMeta(meta);
+      renderVariants();
+      render();
+    }
+    return;
+  }
+
+  // bajar
+  const down = e.target.closest("[data-vdown]");
+  if(down){
+    const idx = Number(down.dataset.vdown);
+    if(idx < vars.length - 1){
+      [vars[idx+1], vars[idx]] = [vars[idx], vars[idx+1]];
+      saveMeta(meta);
+      renderVariants();
+      render();
+    }
+    return;
+  }
+
+  // duplicar
+  const dup = e.target.closest("[data-vdup]");
+  if(dup){
+    const idx = Number(dup.dataset.vdup);
+    const original = vars[idx] || {name:"",price:"",unit:"",notes:""};
+    const copy = JSON.parse(JSON.stringify(original));
+    vars.splice(idx + 1, 0, copy);
+    saveMeta(meta);
+    renderVariants();
+    render();
+    return;
+  }
+
+  // quitar
+  const rm = e.target.closest("[data-vremove]");
+  if(rm){
+    const idx = Number(rm.dataset.vremove);
+    vars.splice(idx, 1);
+    saveMeta(meta);
+    renderVariants();
+    render();
+    return;
+  }
+});
+
+addVarBtn.addEventListener("click", () => {
+  if(!activeVarKey) return;
+  ensureMetaKey(activeVarKey);
+  meta[activeVarKey].variants.push({
+    name: "Base",
+    price: "[PRECIO]",
+    unit: "[UNIDAD]",
+    notes: "Medida: [MEDIDA] · Unidad: [UNIDAD] · Color: [COLOR] · Papel: [PAPEL] · Gramaje: [GRAMAJE] · Acabado: [ACABADO] · Tiempo de producción: [TIEMPO_PRODUCCION] · Tiempo de entrega: [TIEMPO_ENTREGA] · Observaciones: [NOTAS]"
+  });
+  saveMeta(meta);
+  renderVariants();
+  render();
+});
+
+closeVarBtn.addEventListener("click", () => {
+  vDialog.close();
+  activeVarKey = null;
+  vSearchValue = "";
+  render();
+});
+
+// Plantillas
+applyTplBtn.addEventListener("click", () => {
+  if(!activeVarKey) return;
+  const type = tplSel.value;
+  if(!type) return;
+
+  const vars = templateVariants(type);
+  if(!vars.length) return;
+
+  if(!confirm("Esto REEMPLAZA las variaciones actuales. ¿Continuar?")) return;
+  ensureMetaKey(activeVarKey);
+  meta[activeVarKey].variants = vars;
+  saveMeta(meta);
+  renderVariants();
+  render();
+});
+
+appendTplBtn.addEventListener("click", () => {
+  if(!activeVarKey) return;
+  const type = tplSel.value;
+  if(!type) return;
+
+  const vars = templateVariants(type);
+  if(!vars.length) return;
+
+  ensureMetaKey(activeVarKey);
+  meta[activeVarKey].variants.push(...vars);
+  saveMeta(meta);
+  renderVariants();
+  render();
+});
+
+/** =========================
+ *  Export CSV
+ *  ========================= */
+function variantsToText(vars){
+  if(!Array.isArray(vars) || !vars.length) return "";
+  return vars.map(v => {
+    const a = (v.name ?? "").trim();
+    const b = (v.price ?? "").trim();
+    const c = (v.unit ?? "").trim();
+    const d = (v.notes ?? "").trim().replaceAll("\n"," ");
+    return `${a} | $${b} | ${c} | ${d}`;
+  }).join(" ; ");
+}
+
+function toCSV(rows){
+  const header = [
+    "Código","Categoría","Subcategoría","Servicio","Descripción",
+    "Notas globales",
+    "Variaciones (count)","Variaciones (texto)"
+  ];
+  const esc = (v)=> `"${String(v ?? "").replaceAll('"','""')}"`;
+  const lines = [header.map(esc).join(",")];
+
+  rows.forEach(it=>{
+    const k = itemKey(it);
+    const m = ensureMetaKey(k);
+    const vars = m.variants || [];
+    lines.push([
+      it.code,it.cat,it.sub,it.svc,it.desc,
+      m.serviceNotes ?? "",
+      vars.length,
+      variantsToText(vars),
+    ].map(esc).join(","));
+  });
+
+  return lines.join("\n");
+}
+
+$("#exportCsv").addEventListener("click", ()=>{
+  const rows = currentFiltered();
+  const csv = toCSV(rows);
+  const blob = new Blob([csv], {type:"text/csv;charset=utf-8"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "catalogo-servicios-interno.csv";
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+  toastMsg("CSV exportado");
+});
+
+/** =========================
+ *  Init
+ *  ========================= */
+fillCategories();
+fillSubcategories();
+render();
+</script>
+</body>
+</html>
